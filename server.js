@@ -12,7 +12,7 @@ const err_msg = chalk.bgKeyword('white').redBright
 const success_msg = chalk.bgKeyword('green').white
 
 const app = express()
-app.listen(process.env.PORT, process.env.host, (err) => {
+app.listen(process.env.PORT, (err) => {
         console.log("start Svloex")
         err ? console.log('Ошибка', err) :
             console.log('Прослушиваю порт:', process.env.url_true, process.env.host, process.env.PORT)

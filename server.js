@@ -22,7 +22,9 @@ app.listen(process.env.PORT, (err) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     //credentials: true,
-    origin: process.env.url_true
+    origin: process.env.url_true,
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200
 }))
 
 app.post('/', async(req, res) => {

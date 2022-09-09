@@ -26,7 +26,9 @@ app.use(cors({
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200
 }))
-
+app.get('/',(req,res)=>{
+    return res.send('Server')
+})
 app.post('/', async(req, res) => {
     const data = req.body
     console.log(success_msg('/', data, '/'))

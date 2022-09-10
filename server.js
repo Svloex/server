@@ -1,6 +1,7 @@
 require('dotenv').config()
 const path = require('path')
-const http = require('http')
+const fs = require('fs')
+//const http = require('http')
 const express = require('express')
 const chalk = require('chalk')
 const cors = require('cors')
@@ -12,6 +13,8 @@ const err_msg = chalk.bgKeyword('white').redBright
 const success_msg = chalk.bgKeyword('green').white
 
 const app = express()
+ app.set('view engine','ejs')
+
 app.listen(process.env.PORT, (err) => {
         console.log("start Svloex")
         err ? console.log('Ошибка', err) :
@@ -27,20 +30,33 @@ app.use(cors({
     optionSuccessStatus: 200
 }))
 app.get('/',(req,res)=>{
-    return res.send('Server')
+    //res.setHeader('Content-Type','text/html')
+    // fs.readFile('./views/index.html',(err,data)=>{
+    //     if(err){
+    //         console.log(err)
+    //         res.end()
+    //     } 
+    //     else{
+    //         // res.sendFile("./views/index.html")
+    //         //res.end()
+    //     }
+    // })
+    res.render(`${__dirname}/views/index.ejs`)
+   
 })
 app.post('/', async(req, res) => {
     const data = req.body
-    console.log(success_msg('/', data, '/'))
-    console.log('/', data, '/')
+    //console.log(success_msg('/', data, '/'))
+    //console.log('/', data, '/')
     try {
-        console.log('apapapappa')
+        //console.log('apapapappa')
         const resData = await login(data)
-        console.log('здесь', resData)
-        return res.send(resData.data)
+        //console.log('здесь', resData)
+        //res.render(`${__dirname}/views/index.ejs`)
+         res.json(resData.data)
     } catch (error) {
-        console.log(err_msg('тут', error))
-        console.log('тут', error)
+        //console.log(err_msg('тут', error))
+        //console.log('тут', error)
         if (error.response.status === 400) {
             return res.status(error.response.status).send(error.response.data)
         }

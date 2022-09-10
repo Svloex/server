@@ -1,16 +1,16 @@
 require('dotenv').config()
-const path = require('path')
-const fs = require('fs')
+    // const path = require('path')
+    //const fs = require('fs')
     //const http = require('http')
 const express = require('express')
-const chalk = require('chalk')
+    //const chalk = require('chalk')
 const cors = require('cors')
     //const { default: api } = require('./axios-parameter/instance-axios')
 const { login } = require('./controller/request-with-axieos')
     //const PORT = 4000
     //const queryString = require('querystring')
-const err_msg = chalk.bgKeyword('white').redBright
-const success_msg = chalk.bgKeyword('green').white
+    // const err_msg = chalk.bgKeyword('white').redBright
+    // const success_msg = chalk.bgKeyword('green').white
 
 const app = express()
 app.set('view engine', 'ejs')
